@@ -1,18 +1,325 @@
 @import "fonts.css";
 
+/*
+Text rules 
+Primary Navigation 21/48 HUGE Avant Garde Bold
+Secondary Navigation 16/48 Galaxie Copernicus Book
+Headline (Desktop) 120/132 HUGE Avant Garde Bold
+Body Copy (Desktop) 24/36 Galaxie Copernicus Book
+Headline (Mobile) 44/48 HUGE Avant Garde Bold
+Body Copy (Mobile) 14/24 Galaxie Copernicus Book
+Copyright (Mobile) 12/16 Helvetica Neue Regular
+
+Magenta #ec008c
+Light Gray #eee
+Translucent Black rgba(0, 0, 0, 0.5)
+*/
 body {
-  background: #ec008c;
-  color: #fff;
+  background: #fff;
+  margin: 0;
+}
+
+#main-content #header {
+
+  background: #333 url('../images/background-image.jpg') no-repeat center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  position: relative;
+
+}
+
+#content {
+  padding: 0 6%;
+}
+#content p{
+  font: 14px/24px Galaxie;
+}
+#overlay {
+    display: none;
+}
+/*over initial configuration*/
+#overlay.visible-over {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: block;
+}
+
+#copyright {
+  font: 12px / 16px 'Helvetica Neue', Arial, sans-serif;
+  padding: 2em 24px;
 }
 
 h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  font: 44px/48px "HUGEAvantGardeBold";
+  position: relative;
   margin: 0;
-  font: 20vmin/1 HUGEAvantGardeBold;
-  letter-spacing: -0.06em;
-  text-align: center;
+  top: 100%;
+  
+}
+
+nav#main-menu {
+  background: #ec008c;
+  padding: 0 24px;
+  position: relative;
+  z-index: 4;
+}
+
+nav#main-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#mobile-menu {
+  border: 0;
+  background: transparent url('../images/toggle-open.svg') no-repeat center center;
+  display: inline-block;
+  width: 24px;
+  height: 20px;
+}
+
+.logo {
+  max-width: 60px;
+  display: inline-block;
+  line-height: 1;
+  margin: 0 48px 0 0;
+  vertical-align: middle;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+  line-height: 1;
+  
+}
+
+.nav-option {
+  position: relative;
+}
+
+.first-level .nav-option a {
+  font: 21px/48px "HUGEAvantGardeBold";
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  color: white;
+  background-color: #ec008c;
+  padding: 12px 24px;
+}
+
+.second-level .nav-option a {
+  font: 16px/48px Galaxie;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+  color: white;
+  padding: 12px 24px;
+}
+
+ul.second-level {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.active .second-level {
+  display: block;
+}
+
+/*Mobile*/
+@media only screen and (max-width:768px) {
+
+  #header {
+    height: 240px;
+    background: #333 url('../images/background-image.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 12em;
+  }
+  nav#main-menu{
+    padding: 20px 24px;
+  }
+  h1 {
+    padding: 50px 10%;
+  }
+  #nav-main {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  #main-content{
+     transform: translateX(0em);
+     transition: all 0.7s;
+  }
+  .first-level  {
+    
+    transform: translateX(-20em);
+    transition: all 0.7s;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+    width: 20em;
+    max-width: 70%;
+
+  }
+  .mobile-active .first-level{
+    transform: translateX(0);
+
+
+  }
+  .mobile-active #main-content {
+    transform: translateX(20em);
+     
+  }
+
+  .first-level .nav-option a{
+    background-color:   white;
+    color: black;
+  }
+
+  .logo {
+    opacity: 0;
+  }
+
+  .mobile-active #mobile-menu{
+    float: right;
+    border: 0;
+    background: transparent url(../images/toggle-close.svg)no-repeat center center;
+    width: 24px;
+    height: 20px;
+    padding-top: 15px;
+  }
+  .mobile-active .logo {
+    opacity: inherit;
+  }
+  .nav-option {
+    display: block;
+  }
+
+  .nav-option> a, .nav-option > a:link {
+    line-height: 1;
+    position: relative;
+  }
+
+  .nav-option a:hover {
+    color: #ec008c;
+    background: #eee;
+  }
+
+  .first-level > .parent > a:after {
+    transition: all 0.5s;
+    position: absolute;
+    right: 24px;
+    content: '';
+    width: 24px;
+    height: 20px;
+    background: url('../images/chevron.svg') no-repeat center center;
+  }
+
+  .first-level .active > a:after {
+    transform: rotateX(180deg);
+  }
+  #footer {
+      transform: translateX(-20em);
+      transition: all 0.7s;
+      margin-left: 20px;
+  }
+    .mobile-active #footer {
+      transform: translateX(0em);
+    }
+}
+
+/*Desktop*/
+@media only screen and (min-width:769px) {
+    Body{
+      min-width: 1024px;
+    }
+    #main-content #header {
+      height: 640px;
+      margin-bottom: 60px;
+    }
+
+    h1{
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      margin: 0;
+      width: 60%;
+      font: 120px/132px "HUGEAvantGardeBold";
+      text-align: center;
+      
+    }
+    #footer {
+      display: none;
+    }
+
+
+    .first-level {
+      display: inline-block;
+    }
+    .nav-option {
+      display: inline-block;
+
+    }
+
+    .first-level .nav-option.active a {
+      background: #fff;
+      color: #ec008c;
+    }    
+    .first-level .nav-option a:hover {
+      background: #fff;
+      color: #ec008c;
+    }
+
+    .active .second-level {
+      width: 10em;
+      height: inherit;
+    }
+    .second-level a:hover {
+      background: #fff;
+      color: #ec008c;
+    }
+    .second-level {
+      background: #fff;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 2;
+      font: 24px / 34px Galaxie;
+    }
+    .second-level .nav-option {
+      display: block;
+      clear: both;
+
+    }
+    .second-level .nav-option a{
+      color: #000 !important;
+      display: block;
+    }
+
+
+    .active .second-level a:hover {
+      background: #eee !important;
+      color: #ec008c !important;
+    }
+
+    #mobile-menu {
+      display: none;
+    }
+    #content {
+      max-width: 968px;
+      margin: 0 auto;
+      text-align: justify;
+    }
 }
